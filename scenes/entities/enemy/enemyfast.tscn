@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ocfc1r1tccu0"]
+
+[ext_resource type="PackedScene" uid="uid://c618qklrad6em" path="res://scenes/entities/enemybase.tscn" id="1_u0sk2"]
+[ext_resource type="PackedScene" uid="uid://1cfh2o8a6s20" path="res://scenes/entities/enemy/child/Model_Fast.tscn" id="2_ava8m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0sk2"]
+size = Vector3(0.6, 0.8077148, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ava8m"]
+size = Vector3(0.7, 0.85419923, 0.7)
+
+[node name="EnemyFast" instance=ExtResource("1_u0sk2")]
+max_health = 1.0
+move_speed = 4.0
+xp_value = 1
+
+[node name="Model_Fast_Root" parent="." index="0" instance=ExtResource("2_ava8m")]
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3961426, 0)
+shape = SubResource("BoxShape3D_u0sk2")
+
+[node name="CollisionShape3D" parent="DamageZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42290038, 0)
+shape = SubResource("BoxShape3D_ava8m")

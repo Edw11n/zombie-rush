@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b1h8tl8gg6pmw"]
+
+[ext_resource type="Texture2D" uid="uid://b2eqhltxuu2m0" path="res://assets/Floor/Tiles133C_1K-JPG_AmbientOcclusion.jpg" id="AmbientOcclusion"]
+[ext_resource type="Texture2D" uid="uid://b47hgwalyo5cx" path="res://assets/Floor/Tiles133C_1K-JPG_Color.jpg" id="Color"]
+[ext_resource type="Texture2D" uid="uid://cqxoqcisba264" path="res://assets/Floor/Tiles133C_1K-JPG_Displacement.jpg" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://b8bjqr50kmbpp" path="res://assets/Floor/Tiles133C_1K-JPG_NormalGL.jpg" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://cab2bbb2rtf0y" path="res://assets/Floor/Tiles133C_1K-JPG_Roughness.jpg" id="Roughness"]
+
+[resource]
+albedo_texture = ExtResource("Color")
+roughness_texture = ExtResource("Roughness")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("NormalGL")
+ao_enabled = true
+ao_texture = ExtResource("AmbientOcclusion")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")
+uv1_scale = Vector3(30, 30, 30)
+uv1_triplanar_sharpness = 0.12074214
+uv2_scale = Vector3(40, 40, 40)

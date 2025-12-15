@@ -1,0 +1,193 @@
+[gd_scene load_steps=2 format=3 uid="uid://1c2nnnsbuncl"]
+
+[ext_resource type="Script" uid="uid://blw3rr4jpwio3" path="res://scripts/ui/GameUI.gd" id="1_4itvn"]
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4itvn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_top = 0.062000003
+anchor_right = 0.083000004
+anchor_bottom = 0.171
+offset_top = 1.8239975
+offset_right = 1.383995
+offset_bottom = 4.1920013
+
+[node name="LabelTime" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.30100003
+anchor_right = 1.1550001
+anchor_bottom = 0.87600005
+offset_left = 0.023000002
+offset_top = 0.02699852
+offset_right = -39.53501
+offset_bottom = 0.026996613
+text = "Tiempo: 00:00"
+
+[node name="LabelKills" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 3.4310002
+anchor_bottom = 5.728
+offset_left = 4.0
+offset_top = 43.0
+offset_right = -272.80704
+offset_bottom = -352.144
+text = "Kills: 0"
+
+[node name="PauseMenu" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pausa" type="Label" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_top = 137.0
+offset_right = 26.0
+offset_bottom = 160.0
+grow_horizontal = 2
+text = "PAUSA"
+
+[node name="BtnResume" type="Button" parent="CanvasLayer/PauseMenu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -89.5
+offset_right = 42.0
+offset_bottom = -58.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reanudar"
+
+[node name="BtnRestart" type="Button" parent="CanvasLayer/PauseMenu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -15.5
+offset_right = 38.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reiniciar"
+
+[node name="BtnQuit" type="Button" parent="CanvasLayer/PauseMenu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 59.5
+offset_right = 21.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Salir"
+
+[node name="GameOverMenu" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 122.0
+offset_right = 56.0
+offset_bottom = 145.0
+grow_horizontal = 2
+text = "¡HAS MUERTO!"
+
+[node name="LabelFinalStats" type="Label" parent="CanvasLayer/GameOverMenu"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -128.5
+offset_right = 54.0
+offset_bottom = -79.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tiempo: 00:00
+Kills: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRestartGO" type="Button" parent="CanvasLayer/GameOverMenu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -43.0
+offset_right = 100.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reintentar"
+
+[node name="BtnQuitGO" type="Button" parent="CanvasLayer/GameOverMenu"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Salir"
+
+[connection signal="pressed" from="CanvasLayer/PauseMenu/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/BtnRestart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverMenu/BtnRestartGO" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverMenu/BtnQuitGO" to="." method="_on_btn_quit_pressed"]

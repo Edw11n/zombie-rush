@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xt2m6yxgyfnc"]
+
+[ext_resource type="PackedScene" uid="uid://qp5t8nssda2m" path="res://assets/Characters/glTF/Zombie_Basic.gltf" id="1_try4g"]
+
+[node name="Model_Normal_Root" type="Node3D"]
+
+[node name="Zombie_Basic" parent="." instance=ExtResource("1_try4g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

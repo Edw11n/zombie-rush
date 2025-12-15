@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cty7wpw26phnb"]
+
+[ext_resource type="PackedScene" uid="uid://c618qklrad6em" path="res://scenes/entities/enemybase.tscn" id="1_oa7k6"]
+[ext_resource type="PackedScene" uid="uid://xt2m6yxgyfnc" path="res://scenes/entities/enemy/child/Model_Normal.tscn" id="2_ejlcv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejlcv"]
+size = Vector3(1, 1.6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oa7k6"]
+size = Vector3(1.1, 1.7, 1.1)
+
+[node name="EnemyNormal" instance=ExtResource("1_oa7k6")]
+
+[node name="Model_Normal_Root" parent="." index="0" instance=ExtResource("2_ejlcv")]
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6284092, 0)
+shape = SubResource("BoxShape3D_ejlcv")
+
+[node name="DamageZone" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
+
+[node name="CollisionShape3D" parent="DamageZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6277031, 0)
+shape = SubResource("BoxShape3D_oa7k6")

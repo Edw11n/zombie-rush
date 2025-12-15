@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://f1wk0gqm1djo"]
+
+[ext_resource type="PackedScene" uid="uid://m4h1fbnbl2lk" path="res://assets/Environment/Blood_3.gltf" id="1_4yyna"]
+
+[node name="Blood3" type="Node3D"]
+
+[node name="Blood_3" parent="." instance=ExtResource("1_4yyna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, 0)

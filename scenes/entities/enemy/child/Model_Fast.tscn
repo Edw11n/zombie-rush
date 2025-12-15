@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1cfh2o8a6s20"]
+
+[ext_resource type="PackedScene" uid="uid://cg4nq5ncgm84e" path="res://assets/Characters/glTF/Zombie_Ribcage.gltf" id="1_o63yi"]
+
+[node name="Model_Fast_Root" type="Node3D"]
+
+[node name="Zombie_Ribcage" parent="." instance=ExtResource("1_o63yi")]
+transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7, 0, 0, 0)

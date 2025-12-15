@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd4836npf72lv"]
+
+[ext_resource type="Script" uid="uid://b5vr0lja68yeh" path="res://scripts/entities/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://ck5qgbl0c45qm" path="res://assets/Characters/glTF/Characters_Shaun_SingleWeapon.gltf" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+height = 1.6855469
+
+[sub_resource type="Curve3D" id="Curve3D_4flbx"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15.9811945, 0.012760162, 15.964694, 0, 0, 0, 0, 0, 0, 16.0641, -0.012752533, 16.17875, 0, 0, 0, 0, 0, 0, 15.882289, -0.012676239, -15.964437, 0, 0, 0, 0, 0, 0, -16.063337, 0.012760162, -15.882039),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_4flbx")
+
+[node name="Character" parent="." instance=ExtResource("2_onrkg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65722656, 0)
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="BladeContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="BombTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_4flbx")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath" groups=["enemy_spawn_point"]]
+transform = Transform3D(-0.006679648, 0.0007961091, -0.9999774, 2.910383e-11, 0.9999997, 0.00079612684, 0.9999777, 5.317818e-06, -0.006679646, -15.9811945, 0.012760162, 15.964694)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
+[connection signal="timeout" from="BombTimer" to="." method="_on_bomb_timer_timeout"]

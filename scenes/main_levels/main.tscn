@@ -1,0 +1,144 @@
+[gd_scene load_steps=29 format=3 uid="uid://buasjyuaiu53h"]
+
+[ext_resource type="Script" uid="uid://cxfuwmxlrttju" path="res://scripts/core/main.gd" id="1_1umc4"]
+[ext_resource type="PackedScene" uid="uid://csq8kwemltdo3" path="res://scenes/props/Barrel.tscn" id="2_eu2fj"]
+[ext_resource type="PackedScene" uid="uid://3s26vnkcdo72" path="res://scenes/props/ContainerGreen.tscn" id="3_roat4"]
+[ext_resource type="PackedScene" uid="uid://dbjoeh46t74em" path="res://scenes/props/ContainerRed.tscn" id="4_cve5n"]
+[ext_resource type="PackedScene" uid="uid://ck6npi5c8t2l1" path="res://scenes/props/Blood_1.tscn" id="5_bltl0"]
+[ext_resource type="PackedScene" uid="uid://bo31omv8psafk" path="res://scenes/props/Blood_2.tscn" id="6_k3xlb"]
+[ext_resource type="PackedScene" uid="uid://f1wk0gqm1djo" path="res://scenes/props/Blood_3.tscn" id="7_lnb3s"]
+[ext_resource type="Material" uid="uid://bnikcbv2ossai" path="res://assets/Floor/Grass005_1K-PNG.tres" id="8_mov4i"]
+[ext_resource type="PackedScene" uid="uid://cd4836npf72lv" path="res://scenes/entities/player.tscn" id="9_og11u"]
+[ext_resource type="Script" uid="uid://b25fid47mqlsv" path="res://scripts/core/enemy_manager.gd" id="10_33oj5"]
+[ext_resource type="PackedScene" uid="uid://cty7wpw26phnb" path="res://scenes/entities/enemy/enemynormal.tscn" id="11_x0qgb"]
+[ext_resource type="PackedScene" uid="uid://ocfc1r1tccu0" path="res://scenes/entities/enemy/enemyfast.tscn" id="12_nrf5j"]
+[ext_resource type="PackedScene" uid="uid://b72grlp0b8adg" path="res://scenes/entities/enemy/enemyminiboss.tscn" id="13_escql"]
+[ext_resource type="PackedScene" uid="uid://bv2p0uv6kl5wf" path="res://ui/StatsScreen.tscn" id="14_jn8oo"]
+[ext_resource type="PackedScene" uid="uid://1c2nnnsbuncl" path="res://ui/GameUI.tscn" id="15_jvb1j"]
+[ext_resource type="PackedScene" uid="uid://b60tddwonyxw2" path="res://ui/LevelUpScreen.tscn" id="16_3chno"]
+[ext_resource type="Script" uid="uid://ce380baqf8uyp" path="res://scripts/core/MusicManager.gd" id="17_eu2fj"]
+[ext_resource type="AudioStream" uid="uid://g8k77j0gvqkj" path="res://assets/audio/music/intro1.ogg" id="18_og11u"]
+[ext_resource type="AudioStream" uid="uid://bdjql7x5jq1x" path="res://assets/audio/music/sound1.ogg" id="19_33oj5"]
+[ext_resource type="AudioStream" uid="uid://01s1vacibwyb" path="res://assets/audio/music/sound2.ogg" id="20_x0qgb"]
+[ext_resource type="AudioStream" uid="uid://df86e6jkfvgc7" path="res://assets/audio/music/sound3.ogg" id="21_nrf5j"]
+[ext_resource type="AudioStream" uid="uid://cmojvp51o4sns" path="res://assets/audio/music/sound4.ogg" id="22_escql"]
+[ext_resource type="AudioStream" uid="uid://pgo5735qg2uj" path="res://assets/audio/music/hord2.ogg" id="24_jvb1j"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1bvp3"]
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = SubResource("PhysicalSkyMaterial_1bvp3")
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+ambient_light_color = Color(0.15333316, 0.7521518, 0.74327564, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(0.23137255, 0.59607846, 0.12941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(0.78431374, 0, 0.09411765, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_1umc4")
+obstacles_scenes = Array[PackedScene]([ExtResource("2_eu2fj"), ExtResource("3_roat4"), ExtResource("4_cve5n")])
+floor_details_scenes = Array[PackedScene]([ExtResource("5_bltl0"), ExtResource("6_k3xlb"), ExtResource("7_lnb3s")])
+obstacle_count = 200
+detail_count = 500
+
+[node name="Cielo" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ig7tw")
+
+[node name="Suelo" type="CSGBox3D" parent="."]
+use_collision = true
+collision_mask = 0
+size = Vector3(500, 1, 500)
+material = ExtResource("8_mov4i")
+
+[node name="MuroNorte" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -250)
+use_collision = true
+collision_mask = 0
+size = Vector3(500, 5, 1)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="MuroSur" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 250)
+use_collision = true
+collision_mask = 0
+size = Vector3(500, 5, 1)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="MuroEste" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 3, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 5, 500)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="MuroOeste" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 3, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 5, 500)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 16.379528, 10.440513, 17.504765)
+
+[node name="Player" parent="." instance=ExtResource("9_og11u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4850224, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 13.9, 10)
+projection = 1
+size = 20.0
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("10_33oj5")
+enemy_normal_scene = ExtResource("11_x0qgb")
+enemy_fast_scene = ExtResource("12_nrf5j")
+enemy_miniboss_scene = ExtResource("13_escql")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ExpBar" type="ProgressBar" parent="CanvasLayer" groups=["ui_xp"]]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+size_flags_vertical = 4
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/ExpBar" groups=["ui_level"]]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -11.5
+offset_right = 93.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Nivel:"
+
+[node name="HpBar" type="ProgressBar" parent="CanvasLayer" groups=["ui_hp"]]
+offset_left = 919.0
+offset_top = 29.0
+offset_right = 1152.0
+offset_bottom = 56.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_1bvp3")
+show_percentage = false
+
+[node name="StatsScreen" parent="CanvasLayer" instance=ExtResource("14_jn8oo")]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("15_jvb1j")]
+
+[node name="LevelUpScreen" parent="CanvasLayer" instance=ExtResource("16_3chno")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+script = ExtResource("17_eu2fj")
+intro_track = ExtResource("18_og11u")
+normal_tracks = Array[AudioStream]([ExtResource("19_33oj5"), ExtResource("20_x0qgb"), ExtResource("21_nrf5j"), ExtResource("22_escql")])
+horde_tracks = Array[AudioStream]([ExtResource("24_jvb1j")])

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chctussbg0tdd"]
+
+[ext_resource type="Script" uid="uid://bhaolp1cpc6kf" path="res://scripts/weapons/bomb.gd" id="1_ew0cm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j810f"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j810f"]
+material = SubResource("StandardMaterial3D_j810f")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j810f"]
+radius = 2.0
+
+[node name="Bomb" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ew0cm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j810f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_j810f")
+disabled = true

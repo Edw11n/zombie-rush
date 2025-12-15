@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpxfcpmbhcw10"]
+
+[ext_resource type="Script" uid="uid://d0xlp5uxgvek" path="res://scripts/ui/upgrade_card.gd" id="1_8pkvc"]
+
+[node name="UpgradeCard" type="Button"]
+custom_minimum_size = Vector2(200, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -952.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8pkvc")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 15.0
+offset_right = 27.5
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "Mejora"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.5
+offset_top = -66.0
+offset_right = 54.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Hace cosas chidas"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 54.0
+offset_right = 164.0
+offset_bottom = 168.0
+expand_mode = 1
+stretch_mode = 5

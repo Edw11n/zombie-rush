@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ophj0ubfydo"]
+
+[ext_resource type="PackedScene" uid="uid://cwsy7kkkd0ind" path="res://assets/Characters/glTF/Zombie_Chubby.gltf" id="1_21iwd"]
+
+[node name="Model_Miniboss_Root" type="Node3D"]
+
+[node name="Zombie_Chubby2" parent="." instance=ExtResource("1_21iwd")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

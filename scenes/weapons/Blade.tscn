@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc7h71omg7lrn"]
+
+[ext_resource type="Script" uid="uid://b4mrs8cbj5a81" path="res://scripts/weapons/blade.gd" id="1_jka0i"]
+[ext_resource type="PackedScene" uid="uid://vfahfpvtpvdk" path="res://assets/weapons/scene.gltf" id="2_vn8vr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qyerh"]
+height = 1.0
+radius = 0.7290039
+
+[node name="Blade" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jka0i")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_vn8vr")]
+transform = Transform3D(-2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_qyerh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

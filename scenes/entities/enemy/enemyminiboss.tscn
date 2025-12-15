@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b72grlp0b8adg"]
+
+[ext_resource type="PackedScene" uid="uid://c618qklrad6em" path="res://scenes/entities/enemybase.tscn" id="1_dxoyq"]
+[ext_resource type="PackedScene" uid="uid://c3ophj0ubfydo" path="res://scenes/entities/enemy/child/Model_Miniboss.tscn" id="2_xpoki"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpoki"]
+size = Vector3(2, 1.7163086, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxoyq"]
+size = Vector3(2.2, 1.825586, 2.2)
+
+[node name="EnemyMiniBoss" instance=ExtResource("1_dxoyq")]
+max_health = 200.0
+move_speed = 5.0
+xp_value = 200
+damage_amount = 30
+
+[node name="Model_Miniboss_Root" parent="." index="0" instance=ExtResource("2_xpoki")]
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6418457, 0)
+shape = SubResource("BoxShape3D_xpoki")
+
+[node name="CollisionShape3D" parent="DamageZone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68720704, 0)
+shape = SubResource("BoxShape3D_dxoyq")
