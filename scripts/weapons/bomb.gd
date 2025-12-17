@@ -1,6 +1,6 @@
 extends Area3D
 
-var damage = 5.0
+var damage = 4.0
 var explosion_radius_mult = 1.0
 
 @onready var collision_shape = $CollisionShape3D

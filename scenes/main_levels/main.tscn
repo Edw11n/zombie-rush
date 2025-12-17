@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://buasjyuaiu53h"]
+[gd_scene load_steps=30 format=3 uid="uid://buasjyuaiu53h"]
 
 [ext_resource type="Script" uid="uid://cxfuwmxlrttju" path="res://scripts/core/main.gd" id="1_1umc4"]
 [ext_resource type="PackedScene" uid="uid://csq8kwemltdo3" path="res://scenes/props/Barrel.tscn" id="2_eu2fj"]
@@ -24,10 +24,10 @@
 [ext_resource type="AudioStream" uid="uid://cmojvp51o4sns" path="res://assets/audio/music/sound4.ogg" id="22_escql"]
 [ext_resource type="AudioStream" uid="uid://pgo5735qg2uj" path="res://assets/audio/music/hord2.ogg" id="24_jvb1j"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1bvp3"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_mov4i"]
 
 [sub_resource type="Sky" id="Sky_lquwl"]
-sky_material = SubResource("PhysicalSkyMaterial_1bvp3")
+sky_material = SubResource("PhysicalSkyMaterial_mov4i")
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 2
@@ -36,6 +36,18 @@ ambient_light_color = Color(0.15333316, 0.7521518, 0.74327564, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
 albedo_color = Color(0.23137255, 0.59607846, 0.12941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mov4i"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.5803922, 1, 1, 0.56078434)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
 bg_color = Color(0.78431374, 0, 0.09411765, 1)
@@ -85,7 +97,7 @@ size = Vector3(1, 5, 500)
 material = SubResource("StandardMaterial3D_7dm0k")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 16.379528, 10.440513, 17.504765)
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 240.79964, 56.971634, 238.75449)
 
 [node name="Player" parent="." instance=ExtResource("9_og11u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4850224, 0)
@@ -109,6 +121,7 @@ anchor_right = 1.0
 offset_bottom = 27.0
 grow_horizontal = 2
 size_flags_vertical = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_mov4i")
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer/ExpBar" groups=["ui_level"]]
 layout_mode = 1
@@ -123,10 +136,17 @@ grow_vertical = 2
 text = "Nivel:"
 
 [node name="HpBar" type="ProgressBar" parent="CanvasLayer" groups=["ui_hp"]]
-offset_left = 919.0
-offset_top = 29.0
-offset_right = 1152.0
-offset_bottom = 56.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.068
+anchor_right = 1.0
+anchor_bottom = 0.068
+offset_left = -233.0
+offset_top = -13.564003
+offset_bottom = 13.435997
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
 theme_override_styles/fill = SubResource("StyleBoxFlat_1bvp3")
 show_percentage = false
 
@@ -135,6 +155,19 @@ show_percentage = false
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("15_jvb1j")]
 
 [node name="LevelUpScreen" parent="CanvasLayer" instance=ExtResource("16_3chno")]
+
+[node name="Label" type="Label" parent="CanvasLayer" groups=["ui_warning"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -286.5
+offset_right = 20.0
+offset_bottom = -263.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

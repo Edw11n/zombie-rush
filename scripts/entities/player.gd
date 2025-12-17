@@ -24,7 +24,6 @@ var kunai_scene = preload("res://scenes/weapons/kunai.tscn")
 @onready var attack_timer = $AttackTimer
 @onready var blade_container = $BladeContainer 
 @onready var bomb_timer = $BombTimer
-# Nota: Ya no usamos visual_mesh fijo, lo buscamos dinámicamente abajo
 
 # --- REFERENCIAS UI ---
 var exp_bar: ProgressBar
@@ -34,8 +33,8 @@ var hp_bar: ProgressBar
 # --- SISTEMA DE NIVELES ---
 var level = 0
 var current_xp = 0
-var max_xp = 10 
-var xp_scaler = 1.33 
+var max_xp = 5 
+var xp_scaler = 1.33
 
 # --- ESTADÍSTICAS DE COMBATE ---
 var attack_cooldown = 1.5      
@@ -337,19 +336,27 @@ func apply_weapon_stats(id, weapon_level):
 					s["cooldown"] = 1.0
 				4: s["count"] = 4
 				5: 
+					s["count"] = 5
 					s["is_permanent"] = true
 					s["radius_mult"] = 1.5
 			update_blades()
 		"bomb":
 			match weapon_level:
-				1: s["count"] = 1
-				2: s["area_mult"] = 2.0
-				3: 
+				1: 
+					s["count"] = 1
+					s["cooldown"] = 2
+				2: 
+					s["cooldown"] = 1.85
 					s["damage"] = 5
+				3: 
+					s["damage"] = 6.0
+					s["area_mult"] = 1.5
+				4: 
+					s["count"] = 2
 					s["cooldown"] = 1.7
-				4: s["count"] = 2
 				5: 
-					s["area_mult"] = 2.7
+					s["area_mult"] = 2.5
+					s["damage"] = 7.0
 					s["is_flower"] = true
 					s["fire_pool"] = true
 			bomb_timer.wait_time = s["cooldown"]

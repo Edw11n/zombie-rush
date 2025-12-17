@@ -5,7 +5,7 @@ var card_scene = preload("res://ui/UpgradeCard.tscn") # Ajusta la ruta si es nec
 
 var all_upgrades = [
 	{ "id": "heal", "title": "Poción", "description": "Recupera un 20% de salud.", "icon": preload("res://ui/icons/life.png") },
-	{ "id": "kunai", "title": "Mejorar arma", "description": "Sube el nivel de tu arma.", "icon": preload("res://ui/icons/kunai.png") },
+	{ "id": "kunai", "title": "Mejorar arma", "description": "Sube el nivel de tu arma.", "icon": preload("res://ui/icons/gun.png") },
 	{ "id": "blade", "title": "Cuchilla", "description": "Desbloquea/Mejora la cuchilla.", "icon": preload("res://ui/icons/blade.png") },
 	{ "id": "bomb", "title": "Bomba", "description": "Desbloquea/Mejora la bomba.", "icon": preload("res://ui/icons/bomb.png") },
 	{ "id": "speed_up", "title": "Botas Veloces", "description": "+10% Velocidad.", "icon": preload("res://ui/icons/boot.png") },

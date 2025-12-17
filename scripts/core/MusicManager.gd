@@ -77,7 +77,7 @@ func _on_song_finished():
 		State.HORDE:
 			if horde_tracks.size() > 0:
 				stream = horde_tracks[horde_index]
-				horde_index = 1 - horde_index
+				horde_index = 0 - horde_index
 				play()
 		State.PAUSE:
 			play()

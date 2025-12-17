@@ -16,35 +16,42 @@ script = ExtResource("1_4itvn")
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchor_top = 0.062000003
-anchor_right = 0.083000004
-anchor_bottom = 0.171
-offset_top = 1.8239975
-offset_right = 1.383995
-offset_bottom = 4.1920013
+anchor_top = 0.105000004
+anchor_right = 0.08400001
+anchor_bottom = 0.15100001
+offset_left = 4.0
+offset_top = -0.040000916
+offset_right = 0.23199463
+offset_bottom = 0.1519928
+grow_vertical = 0
+size_flags_horizontal = 0
 
 [node name="LabelTime" type="Label" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.041
-anchor_top = 0.30100003
-anchor_right = 1.1550001
-anchor_bottom = 0.87600005
-offset_left = 0.023000002
-offset_top = 0.02699852
-offset_right = -39.53501
-offset_bottom = 0.026996613
+anchor_left = 0.068
+anchor_top = -0.804
+anchor_right = 1.8220001
+anchor_bottom = -0.216
+offset_left = -0.032000065
+offset_top = 0.003993988
+offset_right = -0.024017334
+offset_bottom = 0.015993118
 text = "Tiempo: 00:00"
+autowrap_mode = 3
 
 [node name="LabelKills" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 3.4310002
-anchor_bottom = 5.728
-offset_left = 4.0
-offset_top = 43.0
-offset_right = -272.80704
-offset_bottom = -352.144
+anchor_left = 0.068
+anchor_top = -0.157
+anchor_right = 0.74300003
+anchor_bottom = 0.294
+offset_left = -0.032000065
+offset_top = 0.0070228577
+offset_right = 0.017997742
+offset_bottom = 0.0060224533
 text = "Kills: 0"
 
 [node name="PauseMenu" type="Panel" parent="CanvasLayer"]
