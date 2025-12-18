@@ -33,8 +33,8 @@ var hp_bar: ProgressBar
 # --- SISTEMA DE NIVELES ---
 var level = 0
 var current_xp = 0
-var max_xp = 5 
-var xp_scaler = 1.33
+var max_xp = 10 
+var xp_scaler = 1.33 
 
 # --- ESTADÍSTICAS DE COMBATE ---
 var attack_cooldown = 1.5      
