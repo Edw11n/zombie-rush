@@ -12,8 +12,8 @@ var horde_index = 0
 
 # --- VARIABLES DE MEMORIA (BOOKMARK) ---
 var last_state_before_pause = State.NORMAL
-var saved_position = 0.0        # Aquí guardaremos el segundo exacto
-var saved_stream = null         # Aquí guardaremos qué canción sonaba
+var saved_position = 0.0
+var saved_stream = null
 
 func _ready():
 	finished.connect(_on_song_finished)
@@ -21,7 +21,6 @@ func _ready():
 
 # --- FUNCIONES DE CONTROL ---
 func play_normal_music():
-	# Si ya estamos tocando música normal y está sonando, no reiniciar
 	if current_state == State.NORMAL and playing: return
 	
 	current_state = State.NORMAL
@@ -30,38 +29,38 @@ func play_normal_music():
 		play()
 
 func play_horde_music():
+	# Si ya está sonando la horda, no reiniciamos
 	if current_state == State.HORDE and playing: return
 
 	current_state = State.HORDE
 	if horde_tracks.size() > 0:
-		stream = horde_tracks[horde_index]
-		horde_index = 1 - horde_index 
+		# USAMOS MÓDULO (%): Si solo hay 1 canción, el índice siempre será 0.
+		# Si hay más, las irá intercalando.
+		stream = horde_tracks[horde_index % horde_tracks.size()]
+		
+		# Preparamos el índice para la siguiente vez
+		horde_index = (horde_index + 1) % horde_tracks.size()
 		play()
 
 func play_pause_music():
-	# 1. GUARDAR ESTADO ACTUAL (EL BOOKMARK)
 	if current_state != State.PAUSE:
 		last_state_before_pause = current_state
-		saved_position = get_playback_position() # Guardamos el segundo actual (ej: 00:45)
-		saved_stream = stream                    # Guardamos la canción actual
+		saved_position = get_playback_position()
+		saved_stream = stream
 	
-	# 2. PONER MÚSICA DE PAUSA
 	current_state = State.PAUSE
 	if intro_track:
 		stream = intro_track
 		play()
 
 func resume_game_music():
-	# 1. RESTAURAR ESTADO
 	current_state = last_state_before_pause
 	
-	# 2. RESTAURAR CANCIÓN Y POSICIÓN
 	if saved_stream != null:
-		stream = saved_stream    # Volvemos a poner la canción que estaba
-		play()                   # La iniciamos
-		seek(saved_position)     # ¡SALTAMOS AL SEGUNDO DONDE QUEDÓ!
+		stream = saved_stream
+		play()
+		seek(saved_position)
 	else:
-		# Por si acaso falló el guardado, volvemos a la lógica normal
 		if current_state == State.HORDE:
 			play_horde_music()
 		else:
@@ -76,8 +75,11 @@ func _on_song_finished():
 				play()
 		State.HORDE:
 			if horde_tracks.size() > 0:
-				stream = horde_tracks[horde_index]
-				horde_index = 0 - horde_index
+				# Al terminar la canción de horda, vuelve a poner la que toca (o la misma)
+				stream = horde_tracks[horde_index % horde_tracks.size()]
+				horde_index = (horde_index + 1) % horde_tracks.size()
 				play()
 		State.PAUSE:
+			# La música de pausa suele tener el Loop activado en la importación, 
+			# pero esto asegura que reinicie si no lo tiene.
 			play()

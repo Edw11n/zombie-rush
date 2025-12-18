@@ -10,7 +10,7 @@ size = Vector3(2, 1.7163086, 2)
 size = Vector3(2.2, 1.825586, 2.2)
 
 [node name="EnemyMiniBoss" instance=ExtResource("1_dxoyq")]
-max_health = 200.0
+max_health = 130.0
 move_speed = 4.5
 xp_value = 200
 damage_amount = 30
